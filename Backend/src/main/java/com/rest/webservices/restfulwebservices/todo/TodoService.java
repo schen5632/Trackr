@@ -28,18 +28,19 @@ public class TodoService {
 		return todos.stream().filter(predicate).toList();
 	}
 	
-	public Todo addTodo(String username, String description, LocalDate targetDate, boolean done, String status) {
-		Todo todo = new Todo(++todosCount,username,description,targetDate,done, status);
+	public Todo addTodo(String id, String username, String description, LocalDate targetDate, boolean done, String status) {
+		Todo todo = new Todo(id,username,description,targetDate,done, status);
 		todos.add(todo);
 		return todo;
 	}
 	
-	public void deleteById(int id) {
+	public void deleteById(String id) {
 		Predicate<? super Todo> predicate = todo -> todo.getId() == id;
 		todos.removeIf(predicate);
 	}
 
-	public Todo findById(int id) {
+	public Todo findById(String id) {
+		System.out.println("test");
 		Predicate<? super Todo> predicate = todo -> todo.getId() == id;
 		Todo todo = todos.stream().filter(predicate).findFirst().get();
 		return todo;

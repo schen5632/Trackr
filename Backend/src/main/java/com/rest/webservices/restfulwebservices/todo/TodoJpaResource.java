@@ -31,20 +31,21 @@ public class TodoJpaResource {
 	}
 	
 	@GetMapping("/users/{username}/todos/{id}")
-	public Todo retrieveTodo(@PathVariable String username, @PathVariable int id) {
+	public Todo retrieveTodo(@PathVariable String username, @PathVariable String id) {
 		//return todoService.findById(id);
+		System.out.println("getmapping");
 		return todoRepository.findById(id).get();
 	}
 
 	@DeleteMapping("/users/{username}/todos/{id}")
-	public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable int id) {
+	public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable String id) {
 		//todoService.deleteById(id);
 		todoRepository.deleteById(id);
 		return ResponseEntity.noContent().build(); // sending response status of no content
 	}
 	
 	@PutMapping("/users/{username}/todos/{id}")
-	public Todo updateTodo(@PathVariable String username, @PathVariable int id, @RequestBody Todo todo) {
+	public Todo updateTodo(@PathVariable String username, @PathVariable String id, @RequestBody Todo todo) {
 		//todoService.updateTodo(todo);
 		todoRepository.save(todo);
 		return todo; // sending response status of no content

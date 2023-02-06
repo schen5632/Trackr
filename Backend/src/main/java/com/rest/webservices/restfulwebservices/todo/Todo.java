@@ -15,7 +15,7 @@ public class Todo {
 	// Use Integer instead of int since Integer is a wrapper class while int is a primitive data type
 	// This allows for more flexibility, such as setting Integer to null, which is used for JPA Repository
 	// save method to determine whether to update or add to database
-	public Todo(Integer id, String username, String description, LocalDate targetDate, boolean done, String status) {
+	public Todo(String id, String username, String description, LocalDate targetDate, boolean done, String status) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -26,8 +26,8 @@ public class Todo {
 	}
 
 	@Id
-	@GeneratedValue
-	private Integer id;
+	//@GeneratedValue
+	private String id;
 
 	private String username;
 	
@@ -44,11 +44,11 @@ public class Todo {
 		this.status = status;
 	}
 	
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
